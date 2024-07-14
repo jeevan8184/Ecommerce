@@ -202,4 +202,4 @@ const ResetPassword=()=>{
     )
 }
 
-export default ResetPasswordSuspense
+export default ResetPassword
