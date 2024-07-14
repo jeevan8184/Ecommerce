@@ -15,7 +15,6 @@ import ProductOrder from '../models/order.model';
 export const checkoutOrder = async ({ CheckoutItems, orderId }: { CheckoutItems: CheckoutItemsParams[], orderId: string }) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-  console.log("window",window.location.origin);
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: CheckoutItems?.map((item, i) => {
@@ -36,8 +35,8 @@ export const checkoutOrder = async ({ CheckoutItems, orderId }: { CheckoutItems:
         };
       }),
       mode: 'payment',
-      success_url: `${window.location.origin}/orders?success=${true}&orderId=${orderId}`,
-      cancel_url: `${window.location.origin}/orders?success=${false}`,
+      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/orders?success=${true}&orderId=${orderId}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/orders?success=${false}`,
     });
 
     redirect(session.url!);
