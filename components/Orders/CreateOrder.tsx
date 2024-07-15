@@ -124,7 +124,7 @@ const CreateOrder = ({allItems,setAllItems}:CreateOrderProps) => {
     console.log("AddressInitVals",AddressInitVals);
 
   return (
-    <div className=' max-w-3xl pb-20 max-md:pb-0'>
+    <div className=' max-w-3xl pb-20 max-md:pb-0 overflow-hidden'>
         <div className=' flex flex-col gap-2'>
             <h1 className=' text-3xl font-normal pr-4 sm:hidden flex-center'>Checkout</h1>
             <div className=' w-full gap-6 flex flex-col'>

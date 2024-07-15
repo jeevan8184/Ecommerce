@@ -13,7 +13,7 @@ import Cateogory from '../models/cateogory.model';
 import ProductOrder from '../models/order.model';
 
 export const checkoutOrder = async ({ CheckoutItems, orderId }: { CheckoutItems: CheckoutItemsParams[], orderId: string }) => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);  
 
   try {
     const session = await stripe.checkout.sessions.create({

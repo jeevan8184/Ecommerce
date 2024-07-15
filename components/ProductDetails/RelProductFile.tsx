@@ -24,7 +24,7 @@ const RelProductFile = ({productId}:RelProductFileParams) => {
     console.log("allRelated",allRelated);
 
   return (
-    <div className=' w-full px-2 flex flex-col gap-4'>
+    <div className=' w-full px-2 flex flex-col gap-2'>
         <h1 className=' text-2xl font-semibold'>Related Products</h1>
         <div className=' grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-md:grid-cols-3 max-xl:grid-cols-4'>
             {allRelated?.length>0 && allRelated?.map((product:IProduct,i:any)=>(

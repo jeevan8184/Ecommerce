@@ -12,7 +12,7 @@ import { createRecentView } from '@/lib/database/actions/recentView.actions';
 import { getProductReviews } from '@/lib/database/actions/reviews.actions';
 import { IProduct } from '@/lib/database/models/product.model';
 import { IReview } from '@/lib/database/models/review.model';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getRecentView } from '@/lib/redux/actions';
@@ -25,6 +25,11 @@ const ProductPage = ({params:{id}}:{params:{id:string}}) => {
     const pathname=usePathname();
     const {currUser}=useContext(UserContext);
     const dispatch=useDispatch();
+    const searchParams=useSearchParams();
+
+    const color=searchParams.get("color");
+
+    console.log("color",color);
 
     useEffect(()=>{
         const newFunc=async()=>{
@@ -49,6 +54,12 @@ const ProductPage = ({params:{id}}:{params:{id:string}}) => {
         newFunc();
     },[id,currUser]);
 
+    useEffect(()=> {
+        if(color && product) {
+            
+        }
+    },[color,product]);
+
     console.log("id",id);
 
     if(!product || !selectedProdImgs) return <Loader />
@@ -67,6 +78,7 @@ const ProductPage = ({params:{id}}:{params:{id:string}}) => {
                 <ProductDetails 
                     product={product} 
                     setSelectedImg={setSelectedImg}
+                    selectedImg={selectedImg}
                     selectedProdImgs={selectedProdImgs}
                     setSelectedProdImgs={setSelectedProdImgs} 
                     allReviews={allReviews}

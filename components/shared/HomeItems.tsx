@@ -101,6 +101,7 @@ const HomeItems = () => {
                                         src={img}
                                         alt='image'
                                         layout='fill'
+                                        className=' rounded'
                                     />
                                 </div>
                             </div>

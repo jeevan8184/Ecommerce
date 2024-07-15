@@ -138,7 +138,7 @@ const OrderProduct = ({order,type}:OrderProductProps) => {
                         {type && type==="cancel" ? (
                             <div className='flex gap-4'>
                                 <button 
-                                    className=' px-4 py-1.5 bg-yellow-500 rounded-xl text-sm font-medium'
+                                    className=' px-4 py-1.5 bg-yellow-500 rounded-xl text-sm font-medium max-sm:text-sm'
                                     onClick={handleDelete}
                                 >
                                     Delete order
@@ -195,13 +195,13 @@ const OrderProduct = ({order,type}:OrderProductProps) => {
                                     <h2 className=' text-red-500 font-semibold text-[22px] flex-center'>Payment failed</h2>
                                     <div className=' flex flex-col gap-2'>
                                         <button 
-                                            className=' px-4 py-1.5 bg-orange-400 hover:bg-orange-500 rounded-xl text-sm font-medium'
+                                            className=' px-4 py-1.5 bg-orange-400 hover:bg-orange-500 rounded-xl text-sm font-medium max-sm:text-sm'
                                             onClick={()=> handlePayment()}
                                         >
                                             Retry payment
                                         </button>
                                         <button 
-                                            className=' px-4 py-1.5 bg-yellow-500 rounded-xl text-sm font-medium'
+                                            className=' px-4 py-1.5 bg-yellow-500 rounded-xl text-sm font-medium max-sm:text-sm'
                                             onClick={handleCancel}
                                         >
                                             cancel order

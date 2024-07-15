@@ -94,7 +94,7 @@ const CartProduct = ({cart}:CartProductProps) => {
   return (
     <div className=' flex md:gap-10  max-sm:flex-col gap-1 w-full h-full py-3'>
         <div className=' flex-center'>
-            <div className=' relative h-60 w-60 max-sm:h-40 max-sm:w-40 aspect-square' onClick={()=> router.push(`/product/${cart.product._id}`)}>
+            <div className=' relative h-60 w-60 max-sm:h-40 max-sm:w-40 aspect-square' onClick={()=> router.push(`/product/${cart.product._id}?color=${cart.color}`)}>
                 <Image
                     src={cart.cartImgs[0]}
                     alt='image'
@@ -105,7 +105,7 @@ const CartProduct = ({cart}:CartProductProps) => {
         </div>
         <div className=' flex flex-1 flex-col gap-3 px-2'>
             <div className=' flex flex-col gap-1'>
-                <h1 className=' max-w-3xl font-medium cursor-pointer max-sm:text-sm' onClick={()=> router.push(`/product/${cart.product._id}`)}>{cart?.product.title}</h1>
+                <h1 className=' max-w-3xl font-medium cursor-pointer max-sm:text-sm' onClick={()=> router.push(`/product/${cart.product._id}?color=${cart.color}`)}>{cart?.product.title}</h1>
                 <p className=' mx-1 w-full h-[0.5px] bg-slate-400 rounded-full' />
                 <div className=' flex flex-col'>
                     <div className=' flex gap-4 items-center'>

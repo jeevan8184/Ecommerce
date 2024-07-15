@@ -64,8 +64,8 @@ const MobileFilter = ({cateogory,selectItems,setSelectItems,value,setValue,dataV
         <div className=' flex flex-col gap-0.5'>
             <div className=' flex items-center gap-2'>
                 <div className=' flex flex-col gap-0 w-full'>
-                    <p className=' text-sm font-medium'>price</p>
-                    <div className=' mr-2'>
+                    <p className=' text-sm font-medium -mt-1.5'>price</p>
+                    <div className=' mr-2 w-full'>
                         <Slider
                         aria-label="price range"
                         defaultValue={dataVals.max+100}
@@ -73,7 +73,7 @@ const MobileFilter = ({cateogory,selectItems,setSelectItems,value,setValue,dataV
                         min={dataVals.min-90<0 ? 0 : dataVals.min-90}
                         max={dataVals.max+100}
                         size='small'
-                        className=' size-4'
+                        className=' h-[3px] w-full'
                         value={value}
                         onChange={(e:any)=> {
                             setValue(e?.target?.value as number);

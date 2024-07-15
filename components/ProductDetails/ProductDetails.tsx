@@ -24,10 +24,11 @@ interface ProductDetailsProps {
   setSelectedImg:Dispatch<SetStateAction<string>>,
   setSelectedProdImgs:Dispatch<SetStateAction<{ color: string, images: string[],stock: number } | undefined>>,
   selectedProdImgs:{ color: string, images: string[],stock: number } | undefined,
-  allReviews:IReview[]
+  allReviews:IReview[],
+  selectedImg:string
 }
 
-const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProdImgs,allReviews}:ProductDetailsProps) => {
+const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProdImgs,allReviews,selectedImg}:ProductDetailsProps) => {
   
   const {currUser,setCurrUser}=useContext(UserContext);
   const [quantity, setQuantity] = useState("1");
@@ -87,7 +88,7 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
 
   return (
     <div className=' w-full xl:pr-2 max-md:px-2 whitespace-nowrap'>
-      <div className=''>
+      <div className=' overflow-hidden'>
         <div className=' justify-center flex flex-col gap-4 text-wrap whitespace-normal'>
           <div className=' justify-center flex flex-col '>
             <h1 className=' font-medium leading-8 text-[22px] line-clamp-0 max-sm:text-xl overflow-visible whitespace-wrap'>{product.title}</h1>
@@ -133,7 +134,7 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
               <p className=' px-8 w-full h-[0.5px] bg-slate-400 rounded-full' />
             </div>
           </div>
-          <div className=' flex flex-col'>formatCurrency
+          <div className=' flex flex-col'>
             <div className=' flex gap-4 items-center'>
               <p className=' font-medium text-rose-500 text-xl'>{product?.discount}% off</p>
               <p className=' text-3xl font-light'>{formatCurrency(Number(product?.price)-Number(product?.price*Number((product?.discount))/100))}</p>
@@ -153,7 +154,7 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
                   <div className=' flex gap-2 ml-4'>
                     {prod?.images?.map((img,j)=> (
                       <div key={j}
-                        className=" relative border-2 border-gray-700/50 rounded-md aspect-square h-16 w-16 cursor-pointer"
+                        className={`relative border-2 max-sm:border rounded-md aspect-square h-16 w-16 cursor-pointer ${selectedImg===img ? " border-blue-500":" border-gray-700/50"}`}
                         onClick={()=> {
                           setSelectedImg(img);
                           setSelectedProdImgs(product?.productImgs[i]);
@@ -184,7 +185,7 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
               </SelectContent>
             </Select>
           </div>
-          <div className=''>
+          <div className=' px-3 max-sm:-ml-2'>
             <div className=' flex gap-3 max-sm:flex-col'>
               <Button 
                 className='add_cart hover:bg-yellow-500' 
@@ -200,7 +201,7 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
               </Button>
             </div>
           </div>
-          <div className=''>
+          <div className=' pr-1'>
             <div className=' flex flex-col gap-3'>
               <h2 className=' font-semibold text-lg'>About this item</h2>
               <div className=' flex flex-col gap-1 ml-4'>

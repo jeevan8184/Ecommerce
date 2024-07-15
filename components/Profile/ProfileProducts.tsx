@@ -31,7 +31,7 @@ const ProfileProducts = () => {
             {address && (
                 <div className=' flex flex-col gap-2'>
                     <h1 className=' text-lg font-medium'> Your Address : </h1>
-                    <div className=' flex gap-3 px-3 max-sm:px-1 pl-8 py-2 border-2 rounded-xl border-orange-200 bg-orange-50/40'>
+                    <div className=' flex gap-3 px-3 max-sm:px-1 pl-8 py-2 border-2 rounded-xl border-orange-200 bg-orange-50/40 max-sm:flex-start'>
                         <Image
                             src="/used/location.svg"
                             alt='image'
@@ -54,10 +54,10 @@ const ProfileProducts = () => {
                             className=' flex-center flex-col gap-2 border-2 border-orange-400 bg-orange-500/10 px-4 py-6 rounded-2xl cursor-pointer'
                             onClick={()=> router.push("/product")}
                         >
-                            <p className=' text-xl font-medium'>Your products</p>
+                            <p className=' text-xl font-medium text-center'>Your products</p>
                             <Package2 className='flex-center size-9 text-orange-400 font-medium' />
                             <p className=' flex gap-1'>
-                                <span className=' font-medium'>total products : </span>
+                                <span className=' font-medium max-sm:text-sm'>total products : </span>
                                 {currUser?.products.length}
                             </p>
                         </div>
@@ -69,11 +69,11 @@ const ProfileProducts = () => {
                     )}
                     {currUser?.userType==="Admin" && (
                         <div 
-                            className='  flex-center flex-col gap-2 border-2 border-red-400 bg-red-500/10 px-4 py-6 rounded-2xl cursor-pointer'
+                            className='  flex-center flex-col gap-2 border-2 w-full border-red-400 bg-red-500/10 px-4 py-6 rounded-2xl cursor-pointer'
                             onClick={()=> router.push("/create")}
                         >
-                            <p className=' text-xl font-medium max-lg:hidden'>Create a New Product</p>
-                            <p className=' text-xl font-medium lg:hidden'>Create a Product</p>
+                            <p className=' text-xl font-medium max-lg:hidden text-center'>Create a New Product</p>
+                            <p className=' text-xl font-medium lg:hidden text-center'>Create a Product</p>
                             <BadgePlusIcon className='flex-center size-9 text-red-500 font-medium' />
                             <Link
                                 href="/create"
@@ -87,10 +87,10 @@ const ProfileProducts = () => {
                         className='  flex-center flex-col gap-2 border-2 bg-gradient-to-r border-yellow-500 bg-yellow-500/20 px-4 py-6 rounded-2xl cursor-pointer'
                         onClick={()=> router.push("/orders")}
                     >
-                        <p className=' text-xl font-semibold'>Your Orders</p>
+                        <p className=' text-xl font-semibold text-center'>Your Orders</p>
                         <ShoppingBag className=' flex-center size-9 text-yellow-400 font-medium' />
                         <p className=' flex gap-1'>
-                            <span className=' font-medium'>total orders : </span>
+                            <span className=' font-medium max-sm:text-sm'>total orders : </span>
                             {currUser?.orderItems.length}
                         </p>
                     </div>

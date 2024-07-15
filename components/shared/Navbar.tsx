@@ -129,11 +129,11 @@ const Navbar = () => {
                 )}
                 <div className=' flex gap-6 items-center py-1 mr-2'>
                     <div className=' max-sm:hidden flex flex-col gap-0 items-center cursor-pointer'>
-                        <TruckIcon className='font-normal text-black h-7 w-7' onClick={()=> router.push('/orders')} />
+                        <TruckIcon className='font-normal text-black h-7 w-7' onClick={()=> currUser && router.push('/orders')} />
                         <span className=' text-[13px]'>Orders</span>
                     </div>
                     <div className=' flex flex-col gap-0 items-center cursor-pointer'>
-                        <div className=' relative' onClick={()=> router.push(`/cart?success=${true}`)} >
+                        <div className=' relative' onClick={()=> currUser && router.push(`/cart?success=${true}`)} >
                             <ShoppingCart className=' text-black font-normal h-8 w-8' />
                             <p className='cart_number '>{allCarts !==0 && allCarts}</p>
                         </div>

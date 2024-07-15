@@ -25,8 +25,8 @@ export default function PreviewPage({handleSubmit}:PreviewPageParams) {
 
   return (
     <form action={handleSubmit} method="POST" className=' w-full mx-auto'>
-      <section className=' w-full'>
-        <button type="submit" role="link" className=' w-full'>
+      <section className=' w-full mx-2 mr-2'>
+        <button type="submit" role="link" className=' w-full '>
           add payment
         </button>
       </section>

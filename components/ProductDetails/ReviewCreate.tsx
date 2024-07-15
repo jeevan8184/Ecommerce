@@ -77,7 +77,9 @@ const ReviewCreate = ({product,setAllReviews}:ProductReviewProps) => {
   return (
     <div className=' flex flex-col gap-4 px-2 w-full md:px-4 overflow-hidden'>
         <div className=' flex flex-col gap-4'>
-            <Button className=' bg-slate-300 hover:bg-slate-300 text-black'>write product review</Button>
+            <div className=' w-full mx-auto'>
+                <Button className=' bg-slate-300 w-11/12 hover:bg-slate-300 text-black'>write product review</Button>
+            </div>
             <div className=' flex flex-col gap-4 px-2 py-2 rounded-xl border-2 border-gray-200'>
                 <div className=' flex gap-2'>
                     <div className=' flex-between gap-1 flex-col'>
