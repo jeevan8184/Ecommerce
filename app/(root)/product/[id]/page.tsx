@@ -25,7 +25,7 @@ const ProductPage = ({params:{id}}:{params:{id:string}}) => {
     const pathname=usePathname();
     const {currUser}=useContext(UserContext);
     const dispatch=useDispatch();
-    const searchParams=useSearchParams();
+    const searchParams=useSearchParams(); 
 
     const color=searchParams.get("color");
 
@@ -56,7 +56,7 @@ const ProductPage = ({params:{id}}:{params:{id:string}}) => {
 
     useEffect(()=> {
         if(color && product) {
-            
+
         }
     },[color,product]);
 

@@ -2,7 +2,7 @@
 import UserProductFile from '@/components/ProductDetails/UserProductFile'
 import Footer from '@/components/Cart/Footer'
 import React from 'react'
-
+   
 const ProductPage = () => {
   return (
     <div className=' w-full h-full flex flex-col'>

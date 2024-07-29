@@ -44,7 +44,7 @@ const OrderFileSuspense = () => {
         <h1 className=' font-medium text-2xl'>Your Orders</h1>
         <div className=' flex flex-col flex-1'>
             <Tabs defaultValue="all" className=" w-full bg-transparent">
-                <TabsList className=' w-full flex-start gap-4 bg-transparent shadow-none max-sm:flex-between'>
+                <TabsList className=' w-full flex-start gap-4 bg-transparent shadow-none max-sm:gap-0'>
                     <TabsTrigger 
                         value="all" 
                         className=' text-black data-[state=active]:shadow-none data-[state=active]:text-orange-500 data-[state=active]:underline data-[state=active]:underline-offset-4'

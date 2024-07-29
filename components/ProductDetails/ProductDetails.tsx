@@ -185,17 +185,17 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
               </SelectContent>
             </Select>
           </div>
-          <div className=' px-3 max-sm:-ml-2'>
-            <div className=' flex gap-3 max-sm:flex-col'>
+          <div className=' px-2 max-sm:-ml-2'>
+            <div className=' flex gap-3 max-sm:flex-col w-full'>
               <Button 
-                className='add_cart hover:bg-yellow-500' 
+                className='add_cart hover:bg-yellow-500 max-sm:w-[350px] ' 
                 onClick={handleCart} 
                 disabled={isLoading}
               >
                 {isLoading ? "Adding to Cart":"Add to Cart"}
               </Button>
               <Button 
-                className='buy_now hover:bg-orange-500' 
+                className='buy_now hover:bg-orange-500 max-sm:w-[350px]' 
                 onClick={() => router.push(`/buy/${product?._id}?color=${selectedProdImgs.color}&quantity=${quantity}`)}              >
                 Buy Now
               </Button>

@@ -45,7 +45,7 @@ export const AllRoutes=[
         label:"Profile"
     },
     {
-        link:"/",
+        link:"/orders",
         label:"Orders"
     },
     {
@@ -234,4 +234,23 @@ export const HomeNewItems2 = [
 export const ItemImgs=[
     "/assets/watches/watch.png",
     "/assets/watches/dress.png"
+]
+
+export const searchCats=[
+    {
+        label:"Watches",
+        link:"watches"
+    },
+    {
+        label:"Mens Wear",
+        link:"mens wear"
+    },
+    {
+        label:"womens wear",
+        link:"womens wear"
+    },
+    {
+        label:"Shoes",
+        link:"shoes"
+    },
 ]

@@ -322,7 +322,7 @@ export const getCateogoryProducts=async({
             },
             {
                 $sort:{
-                    ...(rating !==0 && {avgRatin:-1}),
+                    ...(rating !==0 && {avgRating:-1}),
                     ...(discount !==0 && {discount:-1}),
                     ...(sortPrice !==0 && {newPrice:sortPrice}),
                     createdAt:-1
@@ -407,7 +407,7 @@ export const getSearchProducts=async({
             },
             {
                 $sort:{
-                    ...(rating !==0 && {avgRatin:-1}),
+                    ...(rating !==0 && {avgRating:-1}),
                     ...(discount !==0 && {discount:-1}),
                     ...(sortPrice !==0 && {newPrice:sortPrice}),
                     createdAt:-1

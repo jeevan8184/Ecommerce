@@ -22,7 +22,7 @@ const ProductImages = ({selectedImg,setSelectedImg,selectedProdImgs}:ProductImag
                     layout='fill'
                 /> 
             </div>
-            <div className=' flex gap-6'>
+            <div className=' flex gap-6 max-sm:flex-between px-2'>
                 {selectedProdImgs?.images.map((img,i)=> (
                     <div 
                         className={`small_img ${selectedProdImgs.images.length<4 ? " h-24 w-24 max-md:h-20 max-md:w-20" : " h-full w-full"} ${selectedImg===img ? " border-blue-500":" border-slate-800/60"}`} 

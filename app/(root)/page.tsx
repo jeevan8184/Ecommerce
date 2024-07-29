@@ -1,4 +1,5 @@
 "use client"
+import { UserContext } from '@/components/Auth/UserProvider'
 import Footer from '@/components/Cart/Footer'
 import Dresses from '@/components/shared/Dresses'
 import Electronics from '@/components/shared/Electronics'
@@ -7,9 +8,22 @@ import HomeItems from '@/components/shared/HomeItems'
 import HomeMaps from '@/components/shared/HomeMaps'
 import ImgsPage from '@/components/shared/ImgsPage'
 import RecentlyViewed from '@/components/shared/RecentlyViewed'
+import { getRecentView } from '@/lib/redux/actions'
+import { usePathname } from 'next/navigation'
+import { useContext, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const HomePage =() => {
+
+  const {currUser}=useContext(UserContext);
+  const pathname=usePathname();
+  const dispatch=useDispatch();
  
+  useEffect(()=> {
+    if(currUser) {
+        dispatch(getRecentView(currUser?._id,pathname));
+    }
+  },[currUser]);
 
   return (
     <div className=' w-full h-full overflow-hidden flex flex-col bg-slate-50'>

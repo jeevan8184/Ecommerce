@@ -77,7 +77,7 @@ const ImgsPage = () => {
             </div>
           </div>
           
-          <div className='pl-1.5 py-6 max-sm:py-8 max-sm:pb-14 flex justify-center gap-32 max-sm:gap-3 bg-gradient-to-r from-white via-stone-400 to-charcoal-500'>
+          <div className='pl-1.5 py-6 max-sm:py-8 max-sm:pb-8 flex justify-center gap-32 max-sm:gap-3 bg-gradient-to-r from-white via-stone-400 to-charcoal-500'>
             <div className='flex flex-col gap-1 text-xl max-sm:text-[17px] leading-8 max-sm:leading-6'>
               <h2 className='text-2xl font-bold max-sm:text-xl'>Home appliances</h2>
               <p className=''>Experience the Next Generation</p>

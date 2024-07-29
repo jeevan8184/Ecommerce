@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Dispatch, SetStateAction, useContext } from 'react'
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -22,12 +22,13 @@ import { usePathname } from 'next/navigation'
 import { AddressParams } from '@/lib/constants/types'
 import { getAddress } from '@/lib/redux/actions'
 import { useDispatch } from 'react-redux'
+import ShowMap from './ShowMap'
 
 interface AddressFormProps {
     setIsAddress?:Dispatch<SetStateAction<boolean>>,
     type?:"order",
-    AddressInitVals?:AddressParams,
-    setAddressInitVals?:Dispatch<SetStateAction<AddressParams>>,
+    AddressInitVals:AddressParams,
+    setAddressInitVals:Dispatch<SetStateAction<AddressParams>>,
     setIsUpdate?:Dispatch<SetStateAction<boolean>>,
     isUpdate?:boolean
 }
@@ -44,11 +45,16 @@ const AddressForm = ({
     const {currUser}=useContext(UserContext);
     const pathname=usePathname();
     const dispatch=useDispatch();
+    const [isClicked, setIsClicked] = useState(false);
 
     const form = useForm<z.infer<typeof AddressFormValidy>>({
         resolver: zodResolver(AddressFormValidy),
         defaultValues: AddressInitVals
     })
+
+    useEffect(() => {
+        form.reset(AddressInitVals);
+    }, [AddressInitVals, form]);
 
     console.log("AddressInitVals",AddressInitVals);
    
@@ -98,31 +104,6 @@ const AddressForm = ({
                     if(data) dispatch(getAddress(currUser?._id,pathname));
                 }
             }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const handleLocation=async()=>{
-
-        try {
-            if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    async(position) => {
-                      const { latitude, longitude } = position.coords;
-                      const response=await fetch("/api/location",{
-                        method:"POST",
-                        headers: {
-                            'Content-Type': 'application/json'
-                          },
-                        body: JSON.stringify({ lat: latitude, lng: longitude })
-                      })
-                    //   const data=await response?.json();
-                    //   console.log('data',data);
-                    },
-                );
-            }
-            
         } catch (error) {
             console.log(error);
         }
@@ -239,9 +220,20 @@ const AddressForm = ({
                     )}
                 />
             </div>
-            {/* <div className=' w-full pt-2'>
-                <Button className=' px-6 bg-yellow-400 cursor-pointer rounded-xl hover:bg-yellow-400 text-black'>use current location</Button>
-            </div> */}
+            <div className=' w-full pt-2 flex flex-col gap-4'>
+                <Button 
+                    className=' w-fit px-6 bg-yellow-400 cursor-pointer rounded-xl hover:bg-yellow-400 text-black' 
+                    onClick={(e)=> {
+                        e.preventDefault();
+                        setIsClicked(true);
+                    }}
+                >
+                    use current location
+                </Button>
+                {isClicked && (
+                    <ShowMap setAddressInitVals={setAddressInitVals} />
+                )}
+            </div>
             <div className=' flex-between pt-3'>
                 <button onClick={(e)=> {
                     e.preventDefault();

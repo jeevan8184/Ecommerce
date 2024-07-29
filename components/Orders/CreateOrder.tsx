@@ -242,7 +242,7 @@ const CreateOrder = ({allItems,setAllItems}:CreateOrderProps) => {
                                     type='order'
                                 />
                             ):(
-                                <p 
+                                <p  
                                     className='cursor-pointer text-blue-500 text-sm font-semibold w-fit flex gap-1 items-center'
                                     onClick={()=> setIsAddress((prev)=> !prev)}
                                 >

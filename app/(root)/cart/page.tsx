@@ -5,7 +5,7 @@ import Footer from '@/components/Cart/Footer';
 import Loader from '@/components/Cart/Loader';
 import RelatedCarts from '@/components/Cart/RelatedCarts';
 import SavedFile from '@/components/Cart/SavedFile';
-import { getAllCarts, getAllSaved, getRelatedCart } from '@/lib/redux/actions';
+import { getAllCarts, getAllSaved, getRecentView, getRelatedCart } from '@/lib/redux/actions';
 import { usePathname, useSearchParams } from 'next/navigation';
 import React, { Suspense, useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,6 +28,9 @@ const CartSuspense = () => {
       setTimeout(()=> {
         dispatch(getRelatedCart(currUser?._id,pathname));
       },200);
+      setTimeout(()=> {
+        dispatch(getRecentView(currUser?._id,pathname));
+      },500)
 
       console.log("success",success);
     }

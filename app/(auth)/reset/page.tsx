@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input'
 import { CheckEmail } from '@/lib/database/actions/auth.actions';
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { GiShoppingBag } from 'react-icons/gi';
+import {toast} from 'react-hot-toast'
 import {
     InputOTP,
     InputOTPGroup,
@@ -13,9 +14,7 @@ import {
     InputOTPSlot,
   } from "@/components/ui/input-otp"
 import { useSearchParams } from 'next/navigation';
-import {toast} from 'react-hot-toast';
 import Loader from '@/components/Cart/Loader';
-  
 
 const ResetPasswordSuspense = () => {
     const [email, setEmail] = useState('');
@@ -45,6 +44,7 @@ const ResetPasswordSuspense = () => {
             const data=await CheckEmail(email);
             if(data?.error) {
                 setError(data?.error);
+                toast.error(data?.error);
                 setTimeout(()=> {
                     setError('');
                 },2000);

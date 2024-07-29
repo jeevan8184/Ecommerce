@@ -149,7 +149,7 @@ const UserImg = () => {
                 <strong>Type : </strong>
                 <p className=' overflow-x-clip text-ellipsis whitespace-nowrap max-w-52 max-sm:max-w-36 text-sm'>{currUser?.userType}</p>
               </div>
-              <p className=' font-semibold text-blue-500 cursor-pointer' onClick={()=> router.push(`/reset?email=${currUser?.authId.email}`)}>change password</p>
+              <p className=' font-semibold text-blue-500 cursor-pointer w-fit' onClick={()=> router.push(`/reset?email=${currUser?.authId.email}`)}>change password</p>
             </div>
           </div>
         </div>

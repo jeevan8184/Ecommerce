@@ -129,6 +129,7 @@ const ProfileAcc = () => {
                                 AddressInitVals={AddressInitVals}
                                 setIsUpdate={setIsUpdate}
                                 isUpdate={isUpdate}
+                                setAddressInitVals={setAddressInitVals}
                             /> 
                         )}
                     </div>

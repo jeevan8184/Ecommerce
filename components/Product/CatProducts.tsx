@@ -160,11 +160,11 @@ const CatProducts = ({cateogory,selectItems,setSelectItems,value,allProducts,que
                         <div className=' flex gap-2'>
                             {[50,40,30,20,10].map((d,i)=> (
                                 <div 
-                                className={`px-4 py-0.5 rounded-sm  w-fullcursor-pointer flex font-medium ${selectItems.discount.includes(d) ? " bg-blue-500/20 text-blue-500" :" bg-gray-300"}`} 
+                                className={` px-2.5 py-0.5 rounded-sm w-fullcursor-pointer flex font-medium ${selectItems.discount.includes(d) ? " bg-blue-500/20 text-blue-500" :" bg-gray-300"}`} 
                                 key={i}
                                 onClick={()=> handleUpdate('discount',d)}
                                 >
-                                    <p className=' w-full'>{d} %</p>
+                                    <p className=' w-full line-clamp-1'>{d} %</p>
                                 </div>
                             ))}
                         </div>
