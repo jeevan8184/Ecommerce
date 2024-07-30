@@ -22,6 +22,10 @@ const ShowMap = ({setAddressInitVals}:ShowMapParams) => {
     const [coOrds, setCoOrds] = useState<{lat:number,lng:number}>({lat:17.3850,lng:78.4867});
     const [address, setAddress] = useState<any>(null);
 
+    if(window !==undefined) {
+        console.log("window is not defined");
+    }
+
     useEffect(() => {
       
         try {

@@ -9,7 +9,6 @@ import ProfileProducts from '@/components/Profile/ProfileProducts';
 const Profile = () => {
 
   const {currUser}=useContext(UserContext);
-  // if(!currUser) return <Loader />
 
   return (
     <div className='mt-1.5 max-sm:mt-0.5 mx-auto max-w-7xl py-4 px-3 xl:px-0 pb-20'>
