@@ -50,7 +50,7 @@ const SignUp = ({setIsSignIn}:{setIsSignIn:Dispatch<SetStateAction<boolean>>}) =
             cpassword:values.cpassword,
             username:values.username
         })
-        if(data.error) {
+        if(data?.error) {
             setNewError(data.error);
             setTimeout(()=> {
                 setNewError("");

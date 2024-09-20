@@ -38,7 +38,7 @@ const ShowMap = ({setAddressInitVals}:ShowMapParams) => {
                 navigator.geolocation.getCurrentPosition(async(position)=> {
                     const {latitude,longitude}=position.coords;
                     setCoOrds({lat:latitude,lng:longitude});
-        
+                    
                     const response = await fetch(
                         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1`
                     );
