@@ -1,11 +1,11 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import Loader from '../Cart/Loader';
-import { MapPin } from 'lucide-react';
 import { AddressParams } from '@/lib/constants/types';
 
+// Leaflet icon configuration
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
@@ -13,57 +13,57 @@ L.Icon.Default.mergeOptions({
 });
 
 interface ShowMapParams {
-  setAddressInitVals: Dispatch<SetStateAction<AddressParams>>
+  setAddressInitVals: Dispatch<SetStateAction<AddressParams>>;
 }
 
 const ShowMap = ({ setAddressInitVals }: ShowMapParams) => {
-
   const [isLoading, setIsLoading] = useState(false);
-  const [coOrds, setCoOrds] = useState<{ lat: number, lng: number }>({ lat: 17.3850, lng: 78.4867 });
+  const [coOrds, setCoOrds] = useState<{ lat: number; lng: number }>({ lat: 17.3850, lng: 78.4867 });
   const [address, setAddress] = useState<any>(null);
 
-  // Check if window is defined to prevent SSR issues
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsLoading(true);
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-          const { latitude, longitude } = position.coords;
-          setCoOrds({ lat: latitude, lng: longitude });
+    const fetchLocation = async () => {
+      try {
+        setIsLoading(true);
+        if (typeof window !== 'undefined' && navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(async (position) => {
+            const { latitude, longitude } = position.coords;
+            setCoOrds({ lat: latitude, lng: longitude });
 
-          try {
             const response = await fetch(
               `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1`
             );
             const data = await response.json();
             setAddress(data);
-            console.log("data", data);
+            console.log('data', data);
 
             setAddressInitVals((prev) => ({
               ...prev,
               state: data?.address.state,
-              pincode: data.address.postcode,
-              town: data.address.county,
-              area: `${data.address.suburb}, ${data.address.county}, ${data.address.state_district}`
+              pincode: data?.address.postcode,
+              town: data?.address.county,
+              area: `${data?.address.suburb}, ${data?.address.county}, ${data?.address.state_district}`,
             }));
-          } catch (error) {
-            console.log(error);
-          } finally {
-            setIsLoading(false);
-          }
-        });
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
       }
-    }
+    };
+
+    fetchLocation();
   }, [setAddressInitVals]);
 
   const LocationMarker = () => {
-    const [position, setPosition] = useState<{ lat: number, lng: number } | null>(null);
+    const [position, setPosition] = useState<{ lat: number; lng: number } | null>(null);
 
     const map = useMapEvents({
       locationfound(e) {
         setPosition(e.latlng);
         map.flyTo(e.latlng, map.getZoom());
-      }
+      },
     });
 
     useEffect(() => {
@@ -72,20 +72,28 @@ const ShowMap = ({ setAddressInitVals }: ShowMapParams) => {
 
     return position === null ? null : (
       <Marker position={position}>
-        <Popup>You are here <br /> {address && address?.display_name}</Popup>
+        <Popup>
+          You are here <br /> {address && address?.display_name}
+        </Popup>
       </Marker>
-    )
-  }
+    );
+  };
 
   return (
-    <div className='h-full w-full -mx-2'>
+    <div className="h-full w-full -mx-2">
       {isLoading ? (
         <Loader />
       ) : (
-        <div className='h-full w-full'>
-          <MapContainer center={[coOrds?.lat, coOrds?.lng]} zoom={13} scrollWheelZoom={true} className='z-10 rounded-md' style={{ height: "60vh", width: "98%" }}>
+        <div className="h-full w-full">
+          <MapContainer
+            center={[coOrds?.lat, coOrds?.lng]}
+            zoom={13}
+            scrollWheelZoom={true}
+            className="z-10 rounded-md"
+            style={{ height: '60vh', width: '98%' }}
+          >
             <TileLayer
-              attribution='&copy; OpenStreetMap contributors'
+              attribution="&copy; OpenStreetMap contributors"
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <LocationMarker />
@@ -93,7 +101,7 @@ const ShowMap = ({ setAddressInitVals }: ShowMapParams) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default ShowMap;
