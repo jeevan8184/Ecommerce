@@ -230,7 +230,7 @@ const AddressForm = ({
                 >
                     use current location
                 </Button>
-                {isClicked && typeof window !== 'undefined' && (
+                {isClicked && typeof window === 'undefined' && (
                     <ShowMap setAddressInitVals={setAddressInitVals} />
                 )}
             </div>
