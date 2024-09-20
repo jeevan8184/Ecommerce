@@ -42,6 +42,7 @@ const ResetPasswordSuspense = () => {
         try {
             setIsLoading(true);
             const data=await CheckEmail(email);
+            console.log("checkMail",data);
             if(data?.error) {
                 setError(data?.error);
                 toast.error(data?.error);
@@ -55,6 +56,7 @@ const ResetPasswordSuspense = () => {
                     newText+=char.toString();
                 }
                 setText(newText);
+                console.log("OTP",newText);
 
                 const response=await fetch('/api/mailer',{
                     method:'POST',
@@ -64,7 +66,7 @@ const ResetPasswordSuspense = () => {
                     body:JSON.stringify({email,subject:"One time share OTP",msg:`Your one time share OTP is ${newText}`})
                 })
                 const emailData=await response.json();
-                
+                console.log("EmailData",emailData);
                 if(emailData){
                     toast.success("OTP sent successfully");
                     scrollRef?.current.scrollIntoView({ behavior: 'smooth' });
@@ -72,7 +74,6 @@ const ResetPasswordSuspense = () => {
                 setNewEmail(email);
                 setEmail("");
             }
-            
         } catch (error) {
             console.log(error);
         }finally{

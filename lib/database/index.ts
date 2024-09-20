@@ -5,6 +5,8 @@ import mongoose from 'mongoose';
 let cached=(global as any).mongoose || {conn:null,promise:null};
 let url=process.env.MONGODB_URL
 
+console.log("url",url);
+
 export const connectToDB=async()=>{
 
     try {
@@ -19,3 +21,4 @@ export const connectToDB=async()=>{
         console.log(error);
     }
 }
+

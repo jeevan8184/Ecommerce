@@ -52,6 +52,7 @@ const SignIn = ({setIsSignIn}:{setIsSignIn:Dispatch<SetStateAction<boolean>>}) =
             email:values.email,
             password:values.password,
         })
+        console.log("SignIn",data);
         if(data?.error) {
             setNewError(data.error);
             setTimeout(()=> {

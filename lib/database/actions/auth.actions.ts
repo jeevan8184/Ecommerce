@@ -30,6 +30,7 @@ export const AuthResetPass=async({password,cpassword,email,path}:AuthResetPassPa
 
 export const AuthSignIn=async({email,password}:AuthSignInVals)=>{
 
+    console.log("AuthSignIn",email,password);
     try {
         await connectToDB();
         const existAuth=await Auth.findOne({email})

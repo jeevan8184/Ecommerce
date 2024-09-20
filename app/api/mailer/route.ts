@@ -27,9 +27,9 @@ export const POST=async(req:Request)=>{
             subject:subject,
             text:msg
         });
-        
+        console.log("email sent");
         return NextResponse.json("msg sent successfully");
     } catch (error) {
-        console.log(error);
+        console.log("Email Error",error);
     }
 }
