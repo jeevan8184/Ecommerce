@@ -71,7 +71,7 @@ const ProductReview = ({review,setAllReviews,product}:ProductReviewProps) => {
     }
 
   return (
-    <div className=' w-full px-2'>
+    <div className=' w-full pl-1'>
         <div className=' flex gap-2'>
             <div className=' flex-between gap-1 flex-col'>
                 <div className=''>
@@ -116,7 +116,7 @@ const ProductReview = ({review,setAllReviews,product}:ProductReviewProps) => {
                         </div>
                     )}
                 </div>
-                <div className=' flex gap-2'>
+                <div className=' flex gap-2 -ml-2'>
                     {Array.from({length:5},(_,i)=> (
                         <div className='' key={i}>
                             {review?.rating >i ? (
@@ -139,10 +139,10 @@ const ProductReview = ({review,setAllReviews,product}:ProductReviewProps) => {
                         </div>
                     ))}
                 </div>
-                <div className=''>
+                <div className='-ml-2'>
                     <p className=''>{review?.text}</p>
                 </div>
-                <div className='images px-2'>
+                <div className='images px-2 -ml-2'>
                     <div className={`${review?.photos.length>0 ? " bg-white":""}  flex gap-4 relative snap-x snap-mandatory w-full overflow-x-auto no-scrollbar`}>
                         {review?.photos.length>0 && review?.photos.map((img,i)=> (
                             <div className=' snap-center shrink-0' key={i}>

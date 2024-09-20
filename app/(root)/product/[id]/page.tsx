@@ -87,7 +87,7 @@ const ProductPage = ({params:{id}}:{params:{id:string}}) => {
             <div className=' pt-4'>
                 <RelProductFile productId={id} />
             </div>
-            <div className=' flex max-md:flex-col xl:gap-12 lg:gap-0 max-md:gap-8 lg:pt-8'>
+            <div className=' flex max-md:flex-col xl:gap-12 lg:gap-0 max-md:gap-8 lg:pt-8 w-full mx-auto'>
                 <ReviewCreate 
                     product={product} 
                     setAllReviews={setAllReviews}
@@ -102,7 +102,7 @@ const ProductPage = ({params:{id}}:{params:{id:string}}) => {
                     </div>
                     <div className=' w-full flex flex-col gap-4'>
                         {allReviews.map((review,i)=> (
-                            <div className='' key={i}>
+                            <div className=' max-sm:mr-8' key={i}>
                                 <ProductReview 
                                     review={review} 
                                     key={i} 

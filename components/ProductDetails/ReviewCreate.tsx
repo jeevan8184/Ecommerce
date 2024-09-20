@@ -75,13 +75,13 @@ const ReviewCreate = ({product,setAllReviews}:ProductReviewProps) => {
     console.log("uploadedImgs1",uploadedImgs);
 
   return (
-    <div className=' flex flex-col gap-4 px-2 w-full md:px-4 overflow-hidden'>
-        <div className=' flex flex-col gap-4'>
-            <div className=' w-full mx-auto'>
-                <Button className=' bg-slate-300 w-11/12 hover:bg-slate-300 text-black'>write product review</Button>
+    <div className=' flex flex-col gap-4 pr-2 w-full md:px-4 overflow-hidden max-sm:mr-1'>
+        <div className=' flex flex-col gap-4 mr-8'>
+            <div className=' w-full flex items-center mx-6'>
+                <Button className=' bg-slate-300 w-10/12 hover:bg-slate-300 text-black'>write product review</Button>
             </div>
-            <div className=' flex flex-col w-full pr-2 gap-4 px-2 py-2 rounded-xl border-2 border-gray-200'>
-                <div className=' flex gap-2'>
+            <div className=' flex flex-col w-full pr-2 gap-4 px-1 py-2 rounded-xl border-2 border-gray-200'>
+                <div className=' flex gap-2 max-sm:gap-1'>
                     <div className=' flex-between gap-1 flex-col'>
                         <div className=''>
                             <div className=' relative h-12 w-12 rounded-full'>
@@ -100,7 +100,7 @@ const ReviewCreate = ({product,setAllReviews}:ProductReviewProps) => {
                             <p className=''>{currUser?.username}</p>
                             <p className=' text-gray-400 text-sm'>5 days ago</p>
                         </div>
-                        <div className=' flex flex-1 flex-col gap-2 w-full'>
+                        <div className=' flex flex-1 flex-col gap-2 w-full max-sm:-ml-2'>
                             <div className=' flex gap-3'>
                                 {Array.from({length:5},(_,i)=> (
                                     <div className=' cursor-pointer' key={i} onClick={()=> setStars(i+1)}>
@@ -131,8 +131,8 @@ const ReviewCreate = ({product,setAllReviews}:ProductReviewProps) => {
                                 onChange={(e)=> setText(e.target.value)}
                                 className=' border-none xl:w-[90%] w-full focus-visible:ring-0 focus-visible:ring-offset-0'
                             />
-                            <div className=' flex flex-col gap-4 w-[85%]'>
-                                <div {...getRootProps()} className=' cursor-pointer'>
+                            <div className=' flex flex-col gap-4 w-[90%] max-sm:-ml-2'>
+                                <div {...getRootProps()} className=' cursor-pointer w-full'>
                                     <input {...getInputProps()} />
                                     <Button 
                                         className='flex gap-1.5 bg-white border-2 border-blue-500 text-blue-500 hover:bg-white rounded-xl px-6'
@@ -141,11 +141,11 @@ const ReviewCreate = ({product,setAllReviews}:ProductReviewProps) => {
                                         <ImageIcon />{isUploading ? "adding image":"add image"}
                                     </Button>
                                 </div>
-                                <div className='images'>
-                                    <div className={`${uploadedImgs?.length>0 ? " bg-white":""}  flex gap-4 relative snap-x snap-mandatory w-full overflow-x-auto no-scrollbar`}>
+                                <div className='w-full max-w-7xl flex-1 flex max-sm:px-2 md:overflow-x-auto rounded-xl'>
+                                    <div className={`${uploadedImgs?.length>0 ? " bg-white":""} relative w-full snap-x overflow-x-auto flex gap-4 flex-row no-scrollbar`}>
                                         {uploadedImgs?.length>0 && uploadedImgs.map((img,i)=> (
                                             <div className=' snap-center shrink-0' key={i}>
-                                                <div className=' relative h-40 w-40'>
+                                                <div className=' relative h-40 w-40 max-sm:h-32 max-sm:w-32'>
                                                     <Image
                                                         src={img}
                                                         alt='image'
@@ -172,7 +172,7 @@ const ReviewCreate = ({product,setAllReviews}:ProductReviewProps) => {
                         </div>
                     </div>
                 </div>
-                {text && stars !=0 && (
+                {stars !=0 && (
                     <div className=' flex-between px-6'>
                         <button className=' cancel1' onClick={(e)=> {
                             e.preventDefault();

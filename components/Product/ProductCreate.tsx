@@ -356,6 +356,7 @@ const ProductCreate = () => {
                 <button onClick={(e)=> {
                   e.preventDefault();
                   form.reset();
+                  router.back();
                 }} 
                 className=' cancel text-black'>cancel</button>
                 <button 

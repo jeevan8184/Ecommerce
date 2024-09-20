@@ -62,11 +62,11 @@ const Navbar = () => {
     console.log("currUser",currUser);
     
   return (
-    <div className=' w-full bg-white shadow-md fixed top-0 px-2 py-1.5 max-sm:p-1 max-sm:px-4 xl:px-20 z-50'>
+    <div className=' w-full bg-white shadow-md max-sm:shadow-sm fixed top-0 px-2 py-1.5 max-sm:p-1 max-sm:px-4 xl:px-20 z-50'>
         <div className=' flex-between'>
             <div className=' flex-center gap-1 px-2 rounded-xl -left-px -ml-4 cursor-pointer' onClick={()=> router.push('/')}>
-                <GiShoppingBag className=' text-5xl text-orange-500' />
-                <h1 className=' text-4xl text-orange-500/75 opacity-90 underline-offset-8 font-bold rounded-full capitalize'>Shopify</h1>
+                <GiShoppingBag className=' text-5xl max-sm:text-[40px] text-orange-500' />
+                <h1 className=' text-4xl max-sm:text-3xl text-orange-500/75 opacity-90 underline-offset-8 font-bold rounded-full capitalize'>Shopify</h1>
             </div>
             <SearchProducts />
             <div className=' flex gap-6 max-sm:gap-4 items-center'>

@@ -26,7 +26,7 @@ const RelProductFile = ({productId}:RelProductFileParams) => {
   return (
     <div className=' w-full px-2 flex flex-col gap-2'>
         <h1 className=' text-2xl font-semibold'>Related Products</h1>
-        <div className=' grid grid-cols-5 gap-4 max-sm:gap-1 max-sm:grid-cols-2 max-md:grid-cols-3 max-xl:grid-cols-4'>
+        <div className=' grid grid-cols-5 gap-4 -ml-2 max-sm:gap-0 max-sm:grid-cols-2 max-md:grid-cols-3 max-xl:grid-cols-4'>
             {allRelated?.length>0 && allRelated?.map((product:IProduct,i:any)=>(
                 <ProductMap product={product} key={i} type='related' />
             ))}

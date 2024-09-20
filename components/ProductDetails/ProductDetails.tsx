@@ -91,7 +91,7 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
       <div className=' overflow-hidden'>
         <div className=' justify-center flex flex-col gap-4 text-wrap whitespace-normal'>
           <div className=' justify-center flex flex-col '>
-            <h1 className=' font-medium leading-8 text-[22px] line-clamp-0 max-sm:text-xl overflow-visible whitespace-wrap'>{product.title}</h1>
+            <h1 className=' font-medium leading-8 text-[22px] max-sm:text-[20px] max-sm:mr-4 line-clamp-0 max-sm:text-xl overflow-visible whitespace-wrap'>{product.title}</h1>
             <div className=' flex gap-2 items-center cursor-pointer'>
               <p className=' font-medium text-lg'>{ filled!==undefined || filled!==null && filled}</p>
               <div className=' flex gap-1 py-2'>
@@ -147,14 +147,14 @@ const ProductDetails = ({product,setSelectedImg,setSelectedProdImgs,selectedProd
               </div>
             </div>
           </div>
-          <div className=' flex flex-col gap-4'>
+          <div className=' flex flex-col gap-4 w-full overflow-x-auto no-scrollbar'>
             {product?.productImgs.map((prod,i)=> (
-              <div className=' flex flex-col gap-2' key={i}>
+              <div className=' flex flex-col gap-2 w-full' key={i}>
                 <h2 className=''><strong>Color : </strong>{prod?.color}</h2>
-                  <div className=' flex gap-2 ml-4'>
+                  <div className=' flex gap-2 ml-4 relative w-full overflow-x-auto snap-x no-scrollbar'>
                     {prod?.images?.map((img,j)=> (
                       <div key={j}
-                        className={`relative border-2 max-sm:border rounded-md aspect-square h-16 w-16 cursor-pointer ${selectedImg===img ? " border-blue-500":" border-gray-700/50"}`}
+                        className={` snap-mandatory shrink-0 relative border-2 max-sm:border rounded-md aspect-square h-16 w-16 cursor-pointer ${selectedImg===img ? " border-blue-500":" border-gray-700/50"}`}
                         onClick={()=> {
                           setSelectedImg(img);
                           setSelectedProdImgs(product?.productImgs[i]);

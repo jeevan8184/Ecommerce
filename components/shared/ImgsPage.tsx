@@ -82,7 +82,7 @@ const ImgsPage = () => {
               <h2 className='text-2xl font-bold max-sm:text-xl'>Home appliances</h2>
               <p className=''>Experience the Next Generation</p>
               <p className='text-base font-bold'>Buy now from ₹1599</p>
-              <p className='bg-white p-0.5 text-base'>20% cashback on first order</p>
+              <p className='bg-white p-0.5 text-base max-sm:text-sm'>20% cashback on first <strong className=' max-sm:hidden'>order</strong></p>
               <div className=''>
                 <p className='text-base max-sm:hidden'>table | remote</p>
               </div>

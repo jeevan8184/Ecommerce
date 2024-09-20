@@ -94,7 +94,7 @@ export const HomeImgs=[
         link:"/products/shoes"
     },
     {
-        label:"normal use",
+        label:"normal",
         img:"/assets/images/normal.png",
         link:"/products/normal use"
     },
