@@ -22,7 +22,7 @@ import { usePathname } from 'next/navigation'
 import { AddressParams } from '@/lib/constants/types'
 import { getAddress } from '@/lib/redux/actions'
 import { useDispatch } from 'react-redux'
-import ShowMap from './ShowMap'
+import dynamic from 'next/dynamic'
 
 interface AddressFormProps {
     setIsAddress?:Dispatch<SetStateAction<boolean>>,
@@ -32,6 +32,11 @@ interface AddressFormProps {
     setIsUpdate?:Dispatch<SetStateAction<boolean>>,
     isUpdate?:boolean
 }
+
+const ShowMap=dynamic(()=> import("./ShowMap"),{
+    ssr: false,
+    loading: () => <p>Loading...</p>
+})
 
 const AddressForm = ({
     setIsAddress,
@@ -230,7 +235,7 @@ const AddressForm = ({
                 >
                     use current location
                 </Button>
-                {isClicked && typeof window === 'undefined' && (
+                {isClicked && (
                     <ShowMap setAddressInitVals={setAddressInitVals} />
                 )}
             </div>
