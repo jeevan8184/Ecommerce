@@ -19,7 +19,7 @@ const ImgsPage = () => {
           interval={1500} 
           // stopOnHover 
           swipeable
-          className='rounded-xl' 
+          className='rounded-xl max-sm:-mb-3' 
           showIndicators={true}
           transitionTime={500}
           >
