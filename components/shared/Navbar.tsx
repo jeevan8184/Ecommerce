@@ -36,7 +36,7 @@ import {toast} from 'react-hot-toast';
 
 const Navbar = () => {
     const router=useRouter();
-    const {currUser,setCurrUser}=useContext(UserContext);
+    const {currUser,setCurrUser,setShowPopup,setIsPopup}=useContext(UserContext);
     const dispatch=useDispatch();
     const pathname=usePathname();
 
@@ -129,11 +129,25 @@ const Navbar = () => {
                 )}
                 <div className=' flex gap-6 items-center py-1 mr-2'>
                     <div className=' max-sm:hidden flex flex-col gap-0 items-center cursor-pointer'>
-                        <TruckIcon className='font-normal text-black h-7 w-7' onClick={()=> currUser && router.push('/orders')} />
+                        <TruckIcon className='font-normal text-black h-7 w-7' onClick={()=> {
+                            if(currUser) {
+                                router.push('/orders');
+                             }else{
+                                 setShowPopup(true);
+                                 setIsPopup(true);
+                             }
+                        }} />
                         <span className=' text-[13px]'>Orders</span>
                     </div>
                     <div className=' flex flex-col gap-0 items-center cursor-pointer'>
-                        <div className=' relative' onClick={()=> currUser && router.push(`/cart?success=${true}`)} >
+                        <div className=' relative' onClick={()=> {
+                            if(currUser) {
+                               router.push(`/cart?success=${true}`);
+                            }else{
+                                setShowPopup(true);
+                                setIsPopup(true);
+                            }
+                        } } >
                             <ShoppingCart className=' text-black font-normal h-8 w-8' />
                             <p className='cart_number '>{allCarts !==0 && allCarts}</p>
                         </div>

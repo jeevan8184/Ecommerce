@@ -7,6 +7,8 @@ export const UserContext=createContext<any>(null);
 
 const UserProvider = ({children}:{children:React.ReactNode}) => {
     const [currUser, setCurrUser] = useState<IUser | null>(null);
+    const [showPopup, setShowPopup] = useState(false);
+    const [isPopup, setIsPopup] = useState(false);
 
     useEffect(()=> {
         const newFunc=async()=>{
@@ -24,7 +26,10 @@ const UserProvider = ({children}:{children:React.ReactNode}) => {
   return (
      <UserContext.Provider value={{
         currUser,
-        setCurrUser
+        setCurrUser,
+        setShowPopup,
+        showPopup,
+        isPopup, setIsPopup
      }}>
         {children}
      </UserContext.Provider>

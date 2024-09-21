@@ -7,7 +7,7 @@ import { UserContext } from '../Auth/UserProvider'
 
 const HomeMaps = () => {
     const router=useRouter();
-    const {currUser}=useContext(UserContext);
+    const {currUser,setIsPopup}=useContext(UserContext);
 
 
   return (
@@ -15,7 +15,7 @@ const HomeMaps = () => {
         <div className=' mx-auto flex-center'>
             <div className=' flex gap-20 max-sm:gap-5 max-md:gap-10'>
                 {HomeImgs.map(({label,img,link},i)=> (
-                    <div className=' flex flex-col gap-1 cursor-pointer items-center' onClick={()=> currUser && router.push(link)} key={i}>
+                    <div className=' flex flex-col gap-1 cursor-pointer items-center' onClick={()=> currUser ? router.push(link) : setIsPopup(true)} key={i}>
                         <div className=' relative h-16 w-16 max-sm:h-10 max-sm:w-10'>
                             <Image
                                 src={img}

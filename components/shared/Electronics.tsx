@@ -6,7 +6,7 @@ import { UserContext } from '../Auth/UserProvider'
 
 const Electronics = () => {
    const router=useRouter();
-   const {currUser}=useContext(UserContext);
+   const {currUser,setIsPopup}=useContext(UserContext);
 
 
   return (
@@ -18,7 +18,7 @@ const Electronics = () => {
                         Discover the latest smartwatches at unbeatable prices. Limited time offers on top brands!
                     </p>
                 </div>
-                <div className=' grid grid-cols-4 max-sm:grid-cols-2 gap-8 w-full' onClick={()=> currUser && router.push("/products/Watches")}>
+                <div className=' grid grid-cols-4 max-sm:grid-cols-2 gap-8 w-full' onClick={()=> currUser ? router.push("/products/Watches") : setIsPopup(true)}>
                     {HomeWatches.map(({title,description,dec,img},i)=> (
                         <div className=' flex flex-col items-center gap-1 group'>
                             <div className=' relative h-60 w-52 max-sm:h-40 max-sm:w-32 max-lg:h-48 max-lg:w-40'>

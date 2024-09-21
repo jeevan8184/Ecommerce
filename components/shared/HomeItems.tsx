@@ -15,7 +15,7 @@ const HomeItems = () => {
     const [product2, setProduct2] = useState<IProduct>();
 
     const pathname=usePathname();
-    const {currUser}=useContext(UserContext);
+    const {currUser,setIsPopup}=useContext(UserContext);
 
 
     useEffect(()=> {
@@ -45,7 +45,7 @@ const HomeItems = () => {
             </div>
             <div className=' grid gap-1 w-full grid-cols-4 max-sm:grid-cols-4'>
                 {HomeNewItems1.map(({title,desc,img},i)=> (
-                    <div className=' flex flex-col items-center gap-1 group p-1 rounded-md cursor-pointer' onClick={()=> currUser ? router.push("/products/normal use") : router.push("/")}>
+                    <div className=' flex flex-col items-center gap-1 group p-1 rounded-md cursor-pointer' onClick={()=> currUser ? router.push("/products/normal use") : setIsPopup(true)}>
                         <div className=' relative h-32 w-24 max-sm:h-32 max-sm:w-24 max-md:h-40 max-md:w-32'>
                             <Image
                                 src={img}
@@ -61,7 +61,7 @@ const HomeItems = () => {
                     </div>
                 ))}
                   {HomeNewItems2.map(({title,desc,img},i)=> (
-                    <div className=' flex flex-col items-center gap-1 group p-1 rounded-md cursor-pointer' onClick={()=> currUser ? router.push("/products/shoes") : router.push("/")}>
+                    <div className=' flex flex-col items-center gap-1 group p-1 rounded-md cursor-pointer' onClick={()=> currUser ? router.push("/products/shoes") : setIsPopup(true)}>
                         <div className=' relative h-32 w-24 max-sm:h-32 max-sm:w-24 max-md:h-40 max-md:w-32'>
                             <Image
                                 src={img}

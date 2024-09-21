@@ -6,7 +6,7 @@ import { UserContext } from '../Auth/UserProvider'
 
 const Dresses = () => {
     const router=useRouter();
-    const {currUser}=useContext(UserContext);
+    const {currUser,setIsPopup}=useContext(UserContext);
 
   return (
         <div className=' px-2 py-4 bg-white shadow w-full h-full border-t border-t-gray-100'>
@@ -17,7 +17,7 @@ const Dresses = () => {
                 </div>
                 <div className=' grid md:grid-cols-4 max-sm:grid-cols-2 sm:grid-cols-3 gap-10 max-sm:gap-4 w-full no-scrollbar'>
                     {HomeDresses1.map(({title,desc,img},i)=> (
-                        <div className=' flex flex-col items-center gap-1 hover:scale-105 border p-1 rounded-md cursor-pointer' onClick={()=> currUser && router.push("/products/mens wear")}>
+                        <div className=' flex flex-col items-center gap-1 hover:scale-105 border p-1 rounded-md cursor-pointer' onClick={()=> currUser ? router.push("/products/mens wear") : setIsPopup(true)}>
                             <div className=' relative h-64 w-52 max-sm:h-40 max-sm:w-32 max-md:h-40 max-md:w-32'>
                                 <Image
                                     src={img}
@@ -33,7 +33,7 @@ const Dresses = () => {
                         </div>
                     ))}
                     {HomeDresses2.map(({title,desc,img},i)=> (
-                        <div className=' flex flex-col items-center gap-1 hover:scale-105 border p-1 rounded-md cursor-pointer' onClick={()=> currUser && router.push("/products/womens wear")}>
+                        <div className=' flex flex-col items-center gap-1 hover:scale-105 border p-1 rounded-md cursor-pointer' onClick={()=> currUser ? router.push("/products/womens wear") : setIsPopup(true)}>
                             <div className=' relative h-72 w-44 max-sm:h-40 max-sm:w-32 max-md:h-40 max-md:w-32'>
                                 <Image
                                     src={img}
